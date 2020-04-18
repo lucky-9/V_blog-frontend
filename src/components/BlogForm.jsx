@@ -82,7 +82,7 @@ class BlogForm extends Component {
                     <textarea value={blog.description} className="form-control blog-description rounded-2" onChange={this.handleChange} rows="10" id="description" name="description" type="text"/>
                     {errors.description &&<p className="text-danger">{errors.description}</p>}
                 </div>
-                <button className="btn btn-primary mr-5" type="submit">POST</button>
+                <button className="btn btn-dark mr-5" type="submit">POST</button>
                 {this.state.blogSubmitted && <span className="text-success">Blog Submitted Succesfully!</span>}
             </form>
         </div> );

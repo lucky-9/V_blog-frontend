@@ -86,7 +86,7 @@ class SignUp extends Component {
                     <input value={account.password} className="form-control input-field" onChange={this.handleChange}  id="password" name="password" type="password"/>
                     {errors.password &&<p className="text-danger">{errors.password}</p>}
                 </div>
-                <button className="btn btn-primary mr-2" type="submit">SIGN UP</button>
+                <button className="btn btn-dark mr-2" type="submit">SIGN UP</button>
                 <Link to="/signin">Already have an account? signin</Link>
                 {this.state.accountCreated && <p className="text-success">Account Created Succesfully! please signin</p>}
             </form>
