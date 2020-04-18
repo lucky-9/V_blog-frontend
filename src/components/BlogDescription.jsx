@@ -7,7 +7,7 @@ import { isAuthenticated } from './../services/auth';
 
 
 const sizeOfLoader = 150;
-const loaderColor = "#ff7315";
+const loaderColor = "#f4f4f4";
 
 class BlogDescription extends Component {
     constructor(props){
@@ -52,7 +52,7 @@ class BlogDescription extends Component {
         <div className="blog-header-background mb-5">
             <h1 className="blog-heading">{title}</h1>
             <p className="blog-author-details">By {author.username} on {createdAt.substring(0,10)}</p>
-            <p className="like-circle" onClick={this.handleLike}><ThumbUpAltIcon color="secondary" fontSize="large"/>{this.state.blog.likes}</p>
+            <button className="btn btn-dark like-btn" onClick={this.handleLike}><ThumbUpAltIcon fontSize="large"/>{this.state.blog.likes}</button>
         </div>
         <div className="container">
             <p className="blog-description blog-text flex-wrap">{description}</p>

@@ -44,7 +44,7 @@ export default function BlogCard(props) {
             </h5>
         </CardContent>
         <CardActions>
-        <ThumbUpAltIcon color="secondary" onClick={() => console.log("clicked")}/>
+        <ThumbUpAltIcon onClick={() => console.log("clicked")}/>
         <span className="text-secondary">{props.likeCount}</span>
       </CardActions>
     </Card>

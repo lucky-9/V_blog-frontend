@@ -6,7 +6,8 @@ import {signup} from '../services/auth'
 class SignUp extends Component {
     state = { 
         account:{username:'',email:'', password:''},
-        errors:{} 
+        errors:{},
+        accountCreated:false 
      }
 
     schema = {
@@ -57,7 +58,10 @@ class SignUp extends Component {
             this.setState({errors});
         }
         else{
+            let account = {username:'',email:'', password:''};
             console.log("inside else block ");
+            this.setState({accountCreated:true});
+            this.setState({account});
         }});
     }
    
@@ -84,6 +88,7 @@ class SignUp extends Component {
                 </div>
                 <button className="btn btn-primary mr-2" type="submit">SIGN UP</button>
                 <Link to="/signin">Already have an account? signin</Link>
+                {this.state.accountCreated && <p className="text-success">Account Created Succesfully! please signin</p>}
             </form>
         </div> );
     }

@@ -4,11 +4,8 @@ import BlogCard from './BlogCard';
 import { API } from './../backend';
 
 
-
-
-
 const sizeOfLoader = 150;
-const loaderColor = "#ff7315";
+const loaderColor = "#f4f4f4";
 class BlogList extends Component {
 
     state = { blogs:[] }
