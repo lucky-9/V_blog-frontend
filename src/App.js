@@ -29,7 +29,6 @@ class App extends Component {
       <Switch>
         <Route path="/signup" component={SignUp}/>
         <Route path="/signin" component={SignIn}/>
-        <Route path="/editor" component={Wys}/>
         <Route path="/create/blog" component={BlogForm}/>
         <Route path="/blog/description/:blogId" component={BlogDescription}/>
         <Route path='/' component={BlogList}/>
