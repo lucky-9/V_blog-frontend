@@ -6,7 +6,6 @@ import SignUp from './components/SignUp';
 import BlogList from './components/BlogList';
 import BlogDescription from './components/BlogDescription';
 import BlogForm from './components/BlogForm';
-import Wys from './components/wys';
 import './App.css';
 import { isAuthenticated } from './services/auth';
 
