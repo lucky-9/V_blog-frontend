@@ -7,6 +7,7 @@ class SignUp extends Component {
     state = { 
         account:{username:'',email:'', password:''},
         errors:{},
+        signingUp:false,
         accountCreated:false 
      }
 
@@ -48,6 +49,7 @@ class SignUp extends Component {
 
     doSubmit=() =>{
         const {account} = this.state;
+        this.setState({signingUp:true});
         signup({username:account.username, email:account.email, password: account.password})
         .then(data =>{ 
         console.log(data)
@@ -62,6 +64,7 @@ class SignUp extends Component {
             console.log("inside else block ");
             this.setState({accountCreated:true});
             this.setState({account});
+            this.setState({signingUp:false});
         }});
     }
    
@@ -86,7 +89,7 @@ class SignUp extends Component {
                     <input value={account.password} className="form-control input-field" onChange={this.handleChange}  id="password" name="password" type="password"/>
                     {errors.password &&<p className="text-danger">{errors.password}</p>}
                 </div>
-                <button className="btn btn-dark mr-2" type="submit">SIGN UP</button>
+                <button className="btn btn-dark mr-2" type="submit">{this.state.signingUp ? 'SIGNING UP...' : 'SIGN UP'}</button>
                 <Link to="/signin">Already have an account? signin</Link>
                 {this.state.accountCreated && <p className="text-success">Account Created Succesfully! please signin</p>}
             </form>

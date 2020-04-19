@@ -6,6 +6,7 @@ import SignUp from './components/SignUp';
 import BlogList from './components/BlogList';
 import BlogDescription from './components/BlogDescription';
 import BlogForm from './components/BlogForm';
+import Wys from './components/wys';
 import './App.css';
 import { isAuthenticated } from './services/auth';
 
@@ -28,6 +29,7 @@ class App extends Component {
       <Switch>
         <Route path="/signup" component={SignUp}/>
         <Route path="/signin" component={SignIn}/>
+        <Route path="/editor" component={Wys}/>
         <Route path="/create/blog" component={BlogForm}/>
         <Route path="/blog/description/:blogId" component={BlogDescription}/>
         <Route path='/' component={BlogList}/>

@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import Joi from 'joi-browser';
+import ReactHtmlParser from 'react-html-parser'
+import CKEditor from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { submitBlog } from './../services/blog';
 
 class BlogForm extends Component {
     state = { 
         blog:{title:'', description:''},
         errors:{},
-        blogSubmitted:false
+        blogSubmitted:false,
+        submitting:false
      }
 
 
@@ -39,6 +43,7 @@ class BlogForm extends Component {
         this.doSubmit();
     }
     handleChange = (e) =>{
+       
         console.log(e.target.value);
         console.log(e.target.name);
         let blog = {...this.state.blog};
@@ -46,9 +51,19 @@ class BlogForm extends Component {
         this.setState({blog});
     }
 
+
+    handleOnchange = (event, editor) =>{
+        const data = editor.getData();
+        console.log(data);
+        let blog = {...this.state.blog};
+        blog['description'] = data;
+        this.setState({blog})
+    }
+
     doSubmit=() =>{
         const {blog} = this.state;
         console.log("when submitted ", blog.title);
+        this.setState({submitting:true});
         submitBlog({title:blog.title, description: blog.description})
         .then(data =>{ 
         console.log(data)
@@ -62,6 +77,7 @@ class BlogForm extends Component {
             let blog={title:'', description:''}
             console.log("inside else block ");
             this.setState({blogSubmitted:true});
+            this.setState({submitting:false});
             this.setState({blog});
         }});
     }
@@ -79,10 +95,15 @@ class BlogForm extends Component {
                 </div>
                 <div className="form-group">
                     <label htmlFor="description">Description</label>
-                    <textarea value={blog.description} className="form-control blog-description rounded-2" onChange={this.handleChange} rows="10" id="description" name="description" type="text"/>
+                    {/* <textarea value={blog.description} className="form-control blog-description rounded-2" onChange={this.handleChange} rows="10" id="description" name="description" type="text"/> */}
+                    <CKEditor
+                    editor={ClassicEditor}
+                    onChange={this.handleOnchange}
+                    data={blog.description}
+                    />
                     {errors.description &&<p className="text-danger">{errors.description}</p>}
                 </div>
-                <button className="btn btn-dark mr-5" type="submit">POST</button>
+                <button className="btn btn-dark mr-5" type="submit">{this.state.submitting ? 'POSTING...' : 'POST'}</button>
                 {this.state.blogSubmitted && <span className="text-success">Blog Submitted Succesfully!</span>}
             </form>
         </div> );

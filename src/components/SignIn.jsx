@@ -6,7 +6,8 @@ import {signin, authenticate} from '../services/auth';
 class SignIn extends Component {
     state = { 
         account:{email:'', password:''},
-        errors:{} 
+        errors:{},
+        signingIn:false 
      }
 
 
@@ -83,7 +84,7 @@ class SignIn extends Component {
                     <input value={account.password} className="form-control input-field" onChange={this.handleChange}  id="password" name="password" type="password"/>
                     {errors.password &&<p className="text-danger">{errors.password}</p>}
                 </div>
-                <button className="btn btn-dark m-2" type="submit">SIGN IN</button>
+                <button className="btn btn-dark m-2" type="submit">{this.state.signingIn?'SIGNING IN...':'SIGN IN'}</button>
                 <Link to="/signup">Don't have an account? signup</Link>
             </form>
         </div> );
