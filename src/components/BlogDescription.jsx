@@ -26,7 +26,7 @@ class BlogDescription extends Component {
         let blog = {};
         blog = {...this.state.blog};
         blog.likes = blog.likes+1;
-        console.log("before setting state : ", blog);
+        // console.log("before setting state : ", blog);
         this.setState({blog});
         this.setState({liked:true});
         this.setState({disabled:true});
@@ -41,7 +41,6 @@ class BlogDescription extends Component {
             const blogApiCall = await fetch(`${API}/blog/${this.props.match.params.blogId}`)
             var blog = await blogApiCall.json()
             this.setState({blog})
-            console.log(blog)
         }
         catch(ex){
             console.log(`error fetching blog by ID ${ex}`)
@@ -63,7 +62,7 @@ class BlogDescription extends Component {
                     this.setState({disabled:true});
                 }   
             } catch (ex) {
-                console.log("error in finding user liked this blog or not");
+                console.log(ex);
             }
             
 
