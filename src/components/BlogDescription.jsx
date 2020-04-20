@@ -60,7 +60,9 @@ class BlogDescription extends Component {
                 if(likedBlogs.includes(blog._id)){
                     this.setState({liked:true});
                     this.setState({disabled:true});
-                }   
+                }else{
+                    console.log("Blog is not liked by this user")
+                }  
             } catch (ex) {
                 console.log(ex);
             }
