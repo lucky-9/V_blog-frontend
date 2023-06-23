@@ -1,1 +1,1 @@
-export const API = "https://guarded-anchorage-37564.herokuapp.com/api"
+export const API = "https://blog-backend-v.onrender.com/api"
