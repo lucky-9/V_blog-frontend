@@ -1,1 +1,1 @@
-This Project is live at: https://blog-v.netlify.app/
+This Project is live at: [V_Blog](https://blog-v.netlify.app/)
